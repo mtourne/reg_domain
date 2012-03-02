@@ -9,7 +9,7 @@
  *
  */
 
-DEFINE('URL', 'http://mxr.mozilla.org/mozilla-central/source/netwerk/dns/effective_tld_names.dat?raw=1');
+DEFINE('URL', './effective_tld_names.dat');
 
 $format = "php";
 if ($_SERVER['argc']>1) {
