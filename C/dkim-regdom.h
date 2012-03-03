@@ -51,6 +51,7 @@ extern char* findRegisteredDomain(tldnode*,dlist*);
 extern void freeDomLabels(dlist*,char*);
 extern tldnode* readTldTree(char*);
 extern char* getRegisteredDomain(char*,tldnode*);
+extern char* getRegisteredDomainSize(char* signingDomain, size_t size,  tldnode* tree);
 extern void freeTldTree(tldnode*);
 
 #ifdef DEBUG

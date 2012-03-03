@@ -1,12 +1,17 @@
 CC=gcc
 CFLAGS=-Wall -Werror -Wextra -Wstrict-prototypes -Wmissing-prototypes -Wpointer-arith -Wreturn-type -Wcast-qual -Wswitch -Wshadow -Wcast-align -Wno-unused-parameter -Wchar-subscripts -Winline -Wnested-externs -Wredundant-decls
-SOURCES=test-dkim-regdom.c dkim-regdom.c dkim-regdom.h tld-canon.h
+OBJS=test-dkim-regdom.o dkim-regdom.o
 EXECUTABLE=test-dkim-regdom
 
 all: $(EXECUTABLE)
 
 clean:
-	rm -f $(EXECUTABLE)	
+	rm -f $(EXECUTABLE)
+	rm -f *.o
 
-$(EXECUTABLE): $(SOURCES)
-	$(CC) $(CFLAGS) -o $@ $(SOURCES) $(LDFLAGS)
+$(EXECUTABLE): $(OBJS)
+
+.SUFFIXES :.o
+
+.c.o:
+	$(CC) -o $@ -c $< $(CFLAGS)

@@ -25,6 +25,7 @@
 #include "stdlib.h"
 #include "stdio.h"
 #include "string.h"
+#include "stddef.h"
 
 #include "dkim-regdom.h"
 
@@ -209,13 +210,18 @@ void freeDomLabels(dlist* head, char* sDcopy) {
 }
 
 char* getRegisteredDomain(char* signingDomain, tldnode* tree) {
+    return getRegisteredDomainSize(signingDomain, strlen(signingDomain), tree);
+}
+
+
+char* getRegisteredDomainSize(char* signingDomain, size_t size,  tldnode* tree) {
 
 	dlist *cur, *head = NULL;
 	char *saveptr;
 
 	// split domain by . separator
-	char* sDcopy = (char*) malloc(strlen(signingDomain)+1);
-	strcpy(sDcopy, signingDomain);
+	char* sDcopy = (char*) malloc(size + 1);
+	strncpy(sDcopy, signingDomain, size);
 	char* token = strtok_r(sDcopy, ".", &saveptr);
 	while (token != NULL) {
 		cur = (dlist*) malloc(sizeof(dlist));
