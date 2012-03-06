@@ -217,7 +217,7 @@ char* getRegisteredDomain(char* signingDomain, tldnode* tree) {
 char* getRegisteredDomainSize(char* signingDomain, size_t size,  tldnode* tree) {
 
 	dlist *cur, *head = NULL;
-	char *saveptr;
+	char *saveptr = NULL;
 
 	// split domain by . separator
 	char* sDcopy = (char*) malloc(size + 1);
