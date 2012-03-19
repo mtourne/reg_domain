@@ -222,6 +222,7 @@ char* getRegisteredDomainSize(char* signingDomain, size_t size,  tldnode* tree) 
 	// split domain by . separator
 	char* sDcopy = (char*) malloc(size + 1);
 	strncpy(sDcopy, signingDomain, size);
+        sDcopy[size] = '\0';
 	char* token = strtok_r(sDcopy, ".", &saveptr);
 	while (token != NULL) {
 		cur = (dlist*) malloc(sizeof(dlist));
